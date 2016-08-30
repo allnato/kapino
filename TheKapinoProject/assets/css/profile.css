@@ -1,0 +1,147 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face{
+    font-family:'Montserrat';
+    src: url('../fonts/Montserrat/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.header-img{
+    background-image: url(http://i.imgur.com/WDbC6sl.jpg);
+}
+
+.main{
+    transition: .8s all;
+    min-height: 1200px;
+}
+
+.wrapper{
+    transition: .8s all;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lobster{
+    font-family: 'Lobster', 'sans';
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+}
+
+.label{
+    font-size: small;
+}
+
+
+.strong{
+    font-weight: bold;
+}
+
+.tab-content{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.tab-pane.active.well{
+    padding: 55px;
+    min-height: 700px;
+}
+
+.toolbar > h4{
+    color:white;
+    padding-left: 30px;
+    margin-top:16px;
+    font-family: 'montserrat';
+}
+
+.fresh-table .btn{
+    border: solid;
+}
+
+.fresh-table .form-control{
+    margin-top: 10px;
+    border: solid;
+    background-image: none;
+}
+
+.fresh-table #fave-table,
+.fresh-table #ads-table{
+    text-align: left;
+}
+
+.fresh-table{
+    margin-bottom: 30px;
+}
+
+#fave-table, #ads-table{
+    text-align: inherit;
+}
+
+
+#newAdButton{
+    margin-bottom: 75px;
+}
+
+#becomeSellerButton{
+    margin-top: 85px;
+}
+
+.modal-content .modal-body{
+    padding: 0px;
+}
+
+.form-group.is-focused .form-control{
+    background-image: linear-gradient(to bottom, #4CAF50 0%, #41AF71 100%);
+}
+
+.modal-body-form{
+    padding: 40px;
+    padding-top: 0px;
+}
+
+.radio input[type=radio]:checked ~ .check{
+    background-color: #3F51B5;
+
+}
+
+.radio input[type=radio]:checked ~ .circle {
+    border-color: #2196F3;
+}
+
+.modal-body-form .form-group label{
+    font-family: 'montserrat';
+}
+
+.radio{
+    margin-top:0px;
+}
+
+.input-group{
+    margin: 0 auto;
+}
+
+.has-feedback .form-control {
+    padding-right: 0;
+}
+
+#yourFaves{
+    margin-bottom:99px;
+}
+
+.white{
+    color:white;
+}

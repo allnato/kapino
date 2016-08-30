@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face{
+    font-family:'Montserrat';
+    src: url('../fonts/Montserrat/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");*/
+
+
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");*/
+
+    transition: .5 all;
+}
+
+.main{
+    transition: .8s all;
+    padding-bottom: 50px;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lobster{
+    font-family: 'Lobster', 'sans';
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+.page-header.lobster{
+  font-size: 12vh;
+  color: #795548;
+}
+
+.kapino-info{
+  color: #00796B;
+}
+
+.teamcontainer{
+  margin-bottom: 60px;
+  border-bottom-style: dotted;
+  border-bottom-color: #c0c0c0;
+  height: 100%;
+}
+
+.name{
+  font-size: 37px;
+}
+
+.teamdescription{
+    display: flex;
+}
+
+.teamdescription .montserrat{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 20px;
+}
+
+img{
+  height: 200px;
+  width: 200px;
+}
+
+
+/*.col-md-8.teamcontent .montserrat{
+  line-height: 1.5;
+  margin-top: -50px;
+}
+
+.col-md-4.text-center.teamcontent{
+  display: flex;
+  align-items: center;
+}*/

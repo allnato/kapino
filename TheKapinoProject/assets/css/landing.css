@@ -1,0 +1,175 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('fonts/Lobster/lobster-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face{
+    font-family:'Montserrat';
+    src: url('fonts/Montserrat/montserrat-regular-webfont.woff2') format('woff2'),
+        url('../fonts/Montserrat/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main{
+    transition: .8s all;
+
+}
+.section-heading{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.landing-page .wrapper, .landing-page footer{
+  background-color: #E0E0E0;
+}
+
+
+.landing-page .header{
+    height: 100vh;
+}
+
+.description{
+    color: #636363;
+}
+
+.header-clip{
+    -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 90%, 60% 100%, 40% 100%, 0 90%, 0 0);
+    clip-path: polygon(50% 0%, 100% 0, 100% 90%, 60% 100%, 40% 100%, 0 90%, 0 0);
+}
+.header-img{
+    background-image: url(http://i.imgur.com/8E0YeFG.jpg);
+}
+
+.navbar-brand{
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+}
+
+.montserrat{
+    font-family: Montserrat;
+}
+
+.landing-page  .container h1{
+   font-family: 'Lobster', cursive;
+    letter-spacing: 0px;
+    font-size: 7em;
+    color: lemonchiffon;
+}
+
+.landing-page .container h3{
+}
+
+.header-divide{
+    border-right: 1px solid antiquewhite;
+    margin-right: 5px;
+}
+
+.logo-container .logo, .logo-container .brand {
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
+}
+
+.logo-container .logo {
+	overflow: hidden;
+	border-radius: 50%;
+	border: 1px solid #333333;
+	width: 50px;
+	float: left;
+}
+
+.logo-container .logo img {
+	width: 100%;
+}
+
+.logo-container .logo, .logo-container .brand {
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	-o-transition: all .2s;
+	transition: all .2s;
+}
+
+.logo-container .brand {
+	font-size: 16px;
+	color: #FFFFFF;
+	line-height: 18px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 7px;
+	width: 70px;
+	height: 40px;
+	text-align: left;
+}
+
+.modal-body-form .input-group{
+    padding: 0px 0px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    padding-right: 50px;
+}
+
+#signInButton{
+    display: block;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 30px;
+}
+
+#signUpButton{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.feat-num{
+    background-color: #ffe692;
+    color: #caabab;
+    width: 40px;
+    font-size: 25px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+.feat-num h4{
+        color: #3c3c3c;
+}
+
+.social{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.modal-content .modal-body{
+    padding: 0px;
+}
+
+.form-group.is-focused .form-control{
+    background-image: linear-gradient(to bottom, #4CAF50 0%, #41AF71 100%);
+}
+
+.noty_text{
+  font-family: montserrat;
+  font-size: 16px;
+}
+
+
+/*Notifications*/
+
+div.activity{
+  margin-left: 28px;
+}
+
+div.activity-item i{
+  float: left;
+  margin: -3px;
+  font-size: 25px;
+}

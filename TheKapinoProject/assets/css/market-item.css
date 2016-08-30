@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face{
+    font-family:'Montserrat';
+    src: url('../fonts/Montserrat/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");*/
+
+
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");*/
+
+    transition: .5 all;
+}
+
+.bodyBG{
+    background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+.main{
+    transition: .8s all;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lobster{
+    font-family: 'Lobster', 'sans';
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+}
+
+.market-item .wrapper{
+    margin-top: -30px;
+}
+
+#main{
+    padding: 70px 0px;
+}
+
+.footer ul{
+    color:white;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.caption-full .label.productType{
+    background-color: #795548;
+}
+
+.label{
+    font-size: large;
+}
+
+.productPrice{
+    font-family: 'Montserrat', 'sans';
+    font-weight: bold;
+    color: #f44336;
+}
+
+.ct-danger{
+     color: #d17581;
+}
+
+.toolbar > h4{
+    color:white;
+    padding-left: 10px;
+    margin-top:16px;
+    font-family: 'montserrat';
+}
+
+.fresh-table #information-table{
+    text-align: left;
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.notLiked{
+    background-color: #f8bbd0 !important;
+}
+
+.notLiked .material-icons{
+    color: #FF5722;
+    
+}

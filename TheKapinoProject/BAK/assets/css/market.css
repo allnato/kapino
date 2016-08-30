@@ -1,0 +1,183 @@
+@font-face {
+    font-family: 'Lobster';
+    src: url('fonts/Lobster/lobster-regular-webfont.woff2') format('woff2'),
+         url('../fonts/Lobster/lobster-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face{
+    font-family:'Montserrat';
+    src: url('fonts/Montserrat/montserrat-regular-webfont.woff2') format('woff2'),
+        url('../fonts/Montserrat/montserrat-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body{
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/diagmonds.png");*/
+
+
+    /*background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");*/
+
+    transition: .5 all;
+}
+
+
+.bodyBG{
+    background-color: #795548;
+    background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+}
+
+
+.main{
+    transition: .8s all;
+}
+
+.montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lobster{
+    font-family: 'Lobster', 'sans';
+}
+
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 26px;
+}
+
+.market-page .wrapper{
+    margin-top: -30px;
+}
+
+#main{
+    padding: 70px 0px;
+}
+
+.marketNav{
+    padding-top: 65px;
+    margin-bottom:40px;
+}
+
+.carousel-inner .item img{
+    width: 100%;
+}
+
+.caption {
+    min-height: 162px;
+    overflow: hidden;
+}
+
+.caption h4, .caption h5 {
+    white-space: normal;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #e07b00;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.thumbnail .caption h4 > .productName{
+    text-decoration: none;
+
+}
+
+.thumbnail .caption .sellerInfo > a{
+
+    text-decoration:none;
+}
+
+.productPrice{
+    font-family: 'Montserrat', 'sans';
+    font-weight: bold;
+    color: #f44336;
+}
+
+.caption .label.productType {
+    background-color: #795548;
+}
+
+.check{
+    /*margin-left: 20px;*/
+}
+
+.footer ul{
+    color:white;
+}
+
+.carousel-inner .item img{
+    max-height: 430px;
+}
+
+.page-navigation a:hover{
+  background-color: #eee;
+  border-color: #ddd;
+  cursor: default;
+}
+
+a.jp-current, a.jp-current:hover{
+  background-color: #03a9f4;
+  border-color: #03a9f4;
+  cursor: default;
+}
+
+a.jp-current, a.jp-current:hover{
+  color: white !important;
+  background-color: #03a9f4 !important;
+  border-color: #03a9f4 !important;
+
+  cursor: default;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.page-navigation a,
+.page-navigation span {
+  color: gray;
+    border: 0;
+    border-radius: 30px !important;
+    transition: all .3s;
+    padding: 0px 11px;
+    margin: 0 3px;
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-weight: 400;
+    /* font-size: 12px; */
+    text-transform: uppercase;
+    background: transparent;
+    font-family: montserrat;
+    position: relative;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.jp-current {
+    background-color: #03a9f4;
+    border-color: #03a9f4;
+    border-radius: 63%;
+
+}
+
+#productContent{
+  min-height: 994px;
+}
