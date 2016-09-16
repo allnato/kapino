@@ -82,9 +82,10 @@ class KapinoController extends CI_Controller {
             'password' => $this->input->post('password'),
             'Address' => $this->input->post('address'),
             'mobileNum' => $this->input->post('mobile'),
+            'birthDate' => $this->input->post('birthdate'),
             'regDate' => date("Y-m-d"),
         );
-        
+
         $userSession = array(
         'username' =>  $this->input->post('email'),
         'name' => $this->input->post('firstname'),
@@ -141,7 +142,7 @@ class KapinoController extends CI_Controller {
         }
         $this->load->view('market.php', $market);
     }
-    
+
     public function TheSortMarket() {
         $sid = session_id();
         $filterDate = $this->input->post('checkboxDate');
@@ -153,7 +154,7 @@ class KapinoController extends CI_Controller {
             $market['userInfo'] = $this->KapinoUsers->getNameFromEmail($this->session->userdata('username'));
             $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));
             if($filterDate == null) {
-                
+
                 $group = 'updateDate';
                 $market['marketProducts'] = $this->KapinoProducts->getDateProducts($group);
             }
@@ -167,24 +168,24 @@ class KapinoController extends CI_Controller {
         }
         $this->load->view('market.php', $market);
     }
-    
+
     public function TheVarietyMarket() {
-        
+
         $sid = session_id();
         $filterArabica = $this->input->get('checkboxArabica');
         $filterRobusta = $this->input->get('checkboxRobusta');
         $filterLiberica = $this->input->get('checkboxLiberica');
-        
+
         $filterDried = $this->input->get('checkboxDried');
         $filterRoasted = $this->input->get('checkboxRoasted');
         $filterFresh = $this->input->get('checkboxFresh');
-        
+
         if($sid) {
             //Do this if session exists
             $this->load->model('KapinoUsers');
             $this->load->model('KapinoProducts');
             $market['userInfo'] = $this->KapinoUsers->getNameFromEmail($this->session->userdata('username'));
-            $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));  
+            $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));
         }
         else {
             $market['userInfo'] = null;
@@ -236,9 +237,9 @@ class KapinoController extends CI_Controller {
             $var = 'Fresh';
             $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
         }
-        
+
         $this->load->view('market.php', $market);
-        
+
     }
 
     public function TheProfile() {
@@ -252,7 +253,7 @@ class KapinoController extends CI_Controller {
         $profile['disable'] = 0;
         $this->load->view('profile', $profile);
     }
-    
+
     public function TheSellerProfile() {
         $this->load->model('KapinoUsers');
         $sellerID = $this->input->post('sellerID');
@@ -265,7 +266,7 @@ class KapinoController extends CI_Controller {
         $profile['prodInfo'] = $this->KapinoUsers->getAdvertisements($sellerEmail);
         $profile['disable'] = 1;
         $this->load->view('profile', $profile);
-        
+
     }
     public function TheMarketItem() {
         $this->load->model('KapinoUsers');
@@ -284,9 +285,9 @@ class KapinoController extends CI_Controller {
             $marketData['userInfo'] = null;
             $marketData['userFarmID'] = null;
         }
-        
-        
-        
+
+
+
         $releaseDate = strtotime($prodInfo[2]);
         $releaseDate = date('F jS, Y', $releaseDate);
         $marketData['userData'] = $this->KapinoUsers->userMarketItem($prodInfo[1]);
@@ -294,7 +295,7 @@ class KapinoController extends CI_Controller {
         $marketData['prodData'] = $this->KapinoProducts->productMarketItem($prodID);
         $marketData['rateData'] = $this->KapinoProducts->getAllRatings();
         $marketData['userID'] = $this->KapinoUsers->getIDFromEmail($this->session->userdata('username'));
-        
+
 
 
 
@@ -302,30 +303,31 @@ class KapinoController extends CI_Controller {
 
         $this->load->view('market-item.php', $marketData);
     }
-    
+
     public function TheLikeAd() {
         $prodID = $this->input->post('prodID');
         $userID = $this->input->post('userID');
         $faveDate = date("Y-m-d");
         $this->load->model('KapinoUsers');
-        
+
         $formData = array(
             'prodID' => $prodID,
             'userID' => $userID,
             'faveDate'=> $faveDate,
         );
-        var_dump($formData);
-        
-        
+
+        // For Debugging Purposes.
+        // var_dump($formData);
+
         if($this->KapinoUsers->isLiked($userID, $prodID) != null) {
             $this->KapinoUsers->deleteLike($userID, $prodID);
-            var_dump("Hello");
+            // var_dump("Hello");
         }
         else {
             $queue = $this->KapinoUsers->addLike($formData);
-            var_dump($queue);
+            // var_dump($queue);
         }
-        
+
         print $this->KapinoUsers->isLiked($userID, $prodID);
     }
 
@@ -366,36 +368,36 @@ class KapinoController extends CI_Controller {
         redirect(site_url('profile'), 'refresh');
 
     }
-    
+
     public function TheEditAd() {
         $this->load->model('KapinoUsers');
         $this->load->model('KapinoProducts');
-        
+
         $formData = array(
             "type" => $this->input->post('typeRadio'),
             "variety" => $this->input->post('varRadio'),
             "price" => $this->input->post('priceRadio'),
             "updateDate" => date("Y-m-d"),
             "prodID" => $this->input->post('prodID'),
-        
+
         );
         $this->KapinoProducts->editProduct($formData);
         redirect(site_url('profile'), 'refresh');
     }
-    
+
     public function TheDeleteAd() {
         $this->load->model('KapinoUsers');
         $this->load->model('KapinoProducts');
-        
+
         $formData = array(
             "prodID" => $this->input->post('prodID')
         );
         var_dump($formData);
         $this->KapinoProducts->deleteProduct($formData);
         redirect(site_url('profile'), 'refresh');
-        
+
     }
-    
+
     public function TheLeaveAReview() {
         $this->load->model('KapinoUsers');
         $formData = array(
@@ -407,14 +409,14 @@ class KapinoController extends CI_Controller {
         $query = $this->KapinoUsers->addReview($formData);
         //redirect(site_url('market'), 'refresh');
         print $query;
-        
+
     }
 
     public function TheDashboard() {
-        
+
        $this->TheUsers();
     }
-    
+
     public function TheUsers() {
         $this->load->model('KapinoAdmin');
         $AdminUser['userList'] = $this->KapinoAdmin->getAllUsers();
@@ -425,14 +427,14 @@ class KapinoController extends CI_Controller {
         $AdminUser['regUserList'] = $this->KapinoAdmin->getRegUsersPerMonth();
         $this->load->view('admin-users.php', $AdminUser);
     }
-    
+
     public function TheSellers() {
         $this->load->model('KapinoAdmin');
         $AdminSeller['activeSellers'] = $this->KapinoAdmin->getActiveSellers();
         $AdminSeller['sellerList'] = $this->KapinoAdmin->getSellersPerMonth();
         $this->load->view('admin-seller.php', $AdminSeller);
     }
-    
+
     public function TheProducts() {
         $this->load->model('KapinoAdmin');
         $AdminProduct['cTypeOfMonth'] = $this->KapinoAdmin->getCoffeeTypeOfMonth();
@@ -440,7 +442,7 @@ class KapinoController extends CI_Controller {
         $AdminProduct['cTypePerMonth'] = $this->KapinoAdmin->getCoffeeTypePerMonth();
         $AdminProduct['cVarPerMonth'] = $this->KapinoAdmin->getCoffeeVarPerMonth();
         $AdminProduct['cTrend'] = $this->KapinoAdmin->getCoffeeTrendOfYear();
-        $this->load->view('admin-products.php', $AdminProduct); 
+        $this->load->view('admin-products.php', $AdminProduct);
     }
 
     public function TheAboutUs() {
@@ -458,8 +460,8 @@ class KapinoController extends CI_Controller {
         }
         $this->load->view('aboutus.php', $homeData);
     }
-    
-    
+
+
 
 }
 

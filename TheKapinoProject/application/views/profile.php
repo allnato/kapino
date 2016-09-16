@@ -571,7 +571,7 @@
 <script src="<?php echo base_url(); ?>bootstrap/Material%20Kit/assets/js/material.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/animsition/dist/js/animsition.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/noty/packaged/jquery.noty.packaged.min.js"></script>
-
+<script src="<?php echo base_url(); ?>assets/js/moment.js"</script>
 
 <script src="<?php echo base_url(); ?>assets/js/profile.js" type="text/javascript"></script>
 <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
@@ -649,10 +649,10 @@
                     id: $prodInfo[i]['prodID'],
 
             });
-             
+
         }
-        
-        
+
+
         //$fave_table.bootstrapTable('append', $data);
 
 
@@ -671,6 +671,9 @@
             browser: ['animation-duration', '-webkit-animation-duration'],
 
         });
+
+        // Parse the SQL Date Format to Full Date.
+        var userBirthDate = moment($profileData[ 'birthDate' ]).format("MMMM D, YYYY");
 
         $personal_table.bootstrapTable({
 
@@ -706,7 +709,7 @@
                     data: $profileData['address']
                 },{
                     type: 'Birthdate',
-                    data: $profileData['birthDate']
+                    data: userBirthDate
                 },{
                     type: 'Email',
                     data: $profileData['email']
@@ -900,53 +903,53 @@
                 var $amount = row['amount'];
                 console.log("Price is " + $amount);
                 var $date = row['date'];
-                
-                
+
+
                 if($type == "Arabica") {
                     $('#radio-Arabica').attr("checked",true);
 
-                    
-                    
+
+
                 }
                 else if($type == "Liberica") {
                     $('#radio-Liberica').attr("checked",true);
 
-                    
-                    
+
+
 
                 }
                 else if($type == "Robusta") {
                     $('#radio-Robusta').attr("checked",true);
 
-                    
-                    
+
+
 
                 }
-                
-                if($variety == "Roasted") {
-                    $('#radio-Roasted').attr("checked",true); 
 
-                   
-                    
+                if($variety == "Roasted") {
+                    $('#radio-Roasted').attr("checked",true);
+
+
+
                 }
                 else if($variety == "Dried") {
                     $('#radio-Dried').attr("checked",true);
 
-                    
+
                 }
                 else if($variety == "Fresh") {
                     $('#radio-Fresh').attr("checked",true);
 
-                    
+
                 }
-                
+
 //                $('#editAdPrice').val($amount);
                 $('#prodidinput').val(row['id']);
-                
+
 			},
 			'click .remove': function(e, value, row, index) {
-				
-               
+
+
 
                 $("#prodidToDelete").val(row['id']);
                 $("#deleteAd").submit();

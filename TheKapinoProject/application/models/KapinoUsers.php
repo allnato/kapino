@@ -5,7 +5,7 @@ class KapinoUsers extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->sys = $this->load->database('Kapino', TRUE);
+        $this->sys = $this->load->database();
     }
 
 
@@ -170,7 +170,7 @@ class KapinoUsers extends CI_Model {
         }
         return false;
     }
-    
+
     public function getEmailFromID($userID) {
         $condition ="userID ="."'". $userID ."'";
         $this->db->select("email");
@@ -245,28 +245,28 @@ class KapinoUsers extends CI_Model {
     }
 
     public function modifyUserInfo($userInfo) {
-        
+
 
     }
-    
+
     public function addReview($formData) {
-        
+
         $query = $this->db->insert('ratings', $formData);
-        
+
         return $query;
     }
-    
+
     public function isLiked($userID, $prodID) {
         $condition = "prodID =" . "'" . $prodID . "' AND " . "userID =" . "'" . $userID . "'";
         $this->db->select('*');
         $this->db->from('favorites');
         $this->db->where($condition);
-        
+
         $query = $this->db->get();
-        
+
         return $query->row();
     }
-    
+
     public function deleteLike($userID, $prodID) {
         $condition = "prodID =" . "'" . $prodID . "' AND " . "userID =" . "'" . $userID . "'";
         $this->db->where($condition);
