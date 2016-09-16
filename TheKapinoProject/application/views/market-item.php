@@ -137,7 +137,7 @@
                                         <span class="clickable" id="market-name" class="text-info">
                                             By Joe Pakistan
                                         </span>
-                                        
+
                                         <br>
                                         <small id="market-location">New York, Manila</small>
                                     </h4>
@@ -153,7 +153,6 @@
 
 
                             </div>
-
                             <div id="table" class="well">
 
                                 <div class="text-right">
@@ -293,12 +292,12 @@
                 var $rateData = <?php echo json_encode($rateData); ?>;
                 var $userID = <?php echo json_encode($userID); ?>;
                 var $isLiked = <?php echo json_encode($isLiked); ?>;
-                
-                
+
+
                 if($isLiked != null){
                     $('#favButton').removeClass("notLiked");
                 }
-                
+
                 // Check if User is Logged In
                 if($isLogged != false && $isLogged != null) {
                     $('#signup').css('display', 'none');
@@ -355,12 +354,12 @@
 
 
                 }
-            
+
                 $('.clickable').click(function(e){
                    $('#idSeller').val($userData['userID']);
                    $('#id-market-name').submit();
                     console.log("ALLAHU AKBAR");
-                    
+
                 });
 
                 // [END] Navigation Bar Session
@@ -411,32 +410,28 @@
                 $("#rating").val($rating);
                 $("#userIDInput").val($userID);
                 $("#prodIDInput").val($prodData['prodID']);
-                  
+
                   $.ajax({
                       type: "POST",
                       url: "<?php echo site_url("review"); ?>",
                       data:{
                             rate: $rating,
                             feedback: $review,
-                            prodID: $prodData['prodID'], 
+                            prodID: $prodData['prodID'],
                             raterID: $userID
                       },
                       dataType: "json",
                       success: function(result){
                           $('#reviewModal').modal('hide');
-                          
+
                           location.reload();
-                          
+
                             generateSuccess("Your review has been posted!");
-                          
-                          
-                          
-                          
 
                       }
                   });
               });
-            
+
             $('#favButton').click(function(e){
                 console.log($prodData['prodID']);
                 console.log($userID);
@@ -450,14 +445,14 @@
                     },
                    dataType: "json",
                    success: function(result){
-                       
+
                        generateSuccess('You liked this.');
                        $('#favButton').removeClass("notLiked");
                    }
-                   
-               }); 
-                
-                
+
+               });
+
+
             });
               // [END] Submit Button for Rating
 
