@@ -672,9 +672,6 @@
 
         });
 
-        // Parse the SQL Date Format to Full Date.
-        var userBirthDate = moment($profileData[ 'birthDate' ]).format("MMMM D, YYYY");
-
         $personal_table.bootstrapTable({
 
             toolbar: '.personal-toolbar',
@@ -709,7 +706,7 @@
                     data: $profileData['address']
                 },{
                     type: 'Birthdate',
-                    data: userBirthDate
+                    data: $profileData['birthDate']
                 },{
                     type: 'Email',
                     data: $profileData['email']
