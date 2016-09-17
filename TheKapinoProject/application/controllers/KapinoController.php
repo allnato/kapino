@@ -310,6 +310,8 @@ class KapinoController extends CI_Controller {
         $faveDate = date("Y-m-d");
         $this->load->model('KapinoUsers');
 
+        $queue;
+        $status;
         $formData = array(
             'prodID' => $prodID,
             'userID' => $userID,
@@ -320,15 +322,16 @@ class KapinoController extends CI_Controller {
         // var_dump($formData);
 
         if($this->KapinoUsers->isLiked($userID, $prodID) != null) {
-            $this->KapinoUsers->deleteLike($userID, $prodID);
-            // var_dump("Hello");
+            $queue = $this->KapinoUsers->deleteLike($userID, $prodID);
+            $status = 'dislike';
         }
         else {
             $queue = $this->KapinoUsers->addLike($formData);
-            // var_dump($queue);
+            $status = 'like';
         }
 
-        print $this->KapinoUsers->isLiked($userID, $prodID);
+        //print $this->KapinoUsers->isLiked($userID, $prodID);
+        echo json_encode($status);
     }
 
     public function TheSeller() {

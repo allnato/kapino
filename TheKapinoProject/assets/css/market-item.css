@@ -133,5 +133,17 @@ body{
 
 .notLiked .material-icons{
     color: #FF5722;
-    
+
+}
+
+/*Notifications*/
+
+div.activity{
+  margin-left: 28px;
+}
+
+div.activity-item i{
+  float: left;
+  margin: -3px;
+  font-size: 25px;
 }

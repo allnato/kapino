@@ -283,7 +283,6 @@
                 // the body of this function is in assets/material-kit.js
                 $(window).on('scroll', materialKit.checkScrollForTransparentNavbar);
 
-                // [START] Navigation Bar Session
                 var $isLogged = <?php echo json_encode($userInfo); ?>;
                 var $isSeller = <?php echo json_encode($userFarmID); ?>;
                 var $userData = <?php echo json_encode($userData); ?>;
@@ -432,10 +431,9 @@
                   });
               });
 
+            // Favorite Button.
             $('#favButton').click(function(e){
-                console.log($prodData['prodID']);
-                console.log($userID);
-                console.log($isLiked);
+
                $.ajax({
                     type:"POST",
                     url:"<?php echo site_url("like"); ?>",
@@ -444,10 +442,15 @@
                       userID: $userID,
                     },
                    dataType: "json",
-                   success: function(result){
-
-                       generateSuccess('You liked this.');
-                       $('#favButton').removeClass("notLiked");
+                   success:function(result){
+                     console.log(result);
+                     if(result == "like"){
+                       $('#favButton').removeClass('notLiked');
+                       generateLike('Added to Favorites', 'like');
+                     } else {
+                       $('#favButton').addClass('notLiked');
+                       generateLike('Removed from Favorites');
+                     }
                    }
 
                });
@@ -567,6 +570,33 @@
                   animation: {
                     open  : 'animated flipInX',
                     close : 'animated flipOutX',
+                    easing: 'swing',
+                    speed : 500
+                  }
+
+                });
+              }
+
+              function generateLike(message, status){
+                if (typeof(status)==='undefined') status = 'dislike';
+                if(status == 'like'){
+                  status = 'fa-heart';
+                } else {
+                  status = 'fa-heartbeat';
+                }
+                var icon = '<div class="activity-item"> <i class="fa ' + status + ' fa-lg fa-2x"></i> <div class="activity">' + message + ' </div> </div>';
+                var n = noty({
+                  text: icon,
+                  type: 'error',
+                  dismissQueue: true,
+                  timeout: 4000,
+                  closeWith: ['click'],
+                  layout: 'bottomRight',
+                  theme: 'relax',
+                  maxVisible: 10,
+                  animation: {
+                    open  : 'animated bounceInRight',
+                    close : 'animated bounceOutRight',
                     easing: 'swing',
                     speed : 500
                   }

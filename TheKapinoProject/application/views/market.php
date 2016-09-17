@@ -100,19 +100,19 @@
                                             <div class="item">
                                                 <img src="<?php echo base_url(); ?>assets/img/The%20Cropped%204.jpg" alt="Awesome Image" class="slide-image">
                                                 <div class="carousel-caption">
-                                                    <h4><i class="material-icons">location_on</i> Yellowstone National Park, United States</h4>
+                                                    <h4><i class="material-icons">location_on</i></h4>
                                                 </div>
                                             </div>
                                             <div class="item active">
-                                                <img src="<?php echo base_url(); ?>assets/img/The%20Cropped%202.jpg" alt="Awesome Image" class="slide-image">
+                                                <img src="<?php echo base_url(); ?>assets/img/The%20Cropped%205.jpg" alt="Awesome Image" class="slide-image">
                                                 <div class="carousel-caption">
-                                                    <h4><i class="material-icons">location_on</i> Somewhere Beyond, United States</h4>
+                                                    <h4><i class="material-icons">location_on</i></h4>
                                                 </div>
                                             </div>
                                             <div class="item">
                                                 <img src="<?php echo base_url(); ?>assets/img/The%20Cropped%2031.jpg" alt="Awesome Image" class="slide-image">
                                                 <div class="carousel-caption">
-                                                    <h4><i class="material-icons">location_on</i> Yellowstone National Park, United States</h4>
+                                                    <h4><i class="material-icons">location_on</i></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +192,7 @@
                                         <input type="checkbox" name="checkboxFresh" value="Fresh"> Fresh
                                     </label>
                                     <br>
-                                    
+
                                     <br>
                                     <br>
                                     <div class="center-block text-center">

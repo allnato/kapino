@@ -53,6 +53,8 @@ class KapinoUsers extends CI_Model {
         "farmID" => $row->farmID,
 
         );
+        $userInfo['birthDate'] = strtotime($userInfo['birthDate']);
+        $userInfo['birthDate'] = date('F j, Y', $userInfo['birthDate']);
         return $userInfo;
 
 
@@ -274,7 +276,6 @@ class KapinoUsers extends CI_Model {
     }
     public function addLike($formData) {
         $queue = $this->db->insert('favorites', $formData);
-        return $queue->row();
     }
 
 
