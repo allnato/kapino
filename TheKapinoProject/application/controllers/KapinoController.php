@@ -254,6 +254,25 @@ class KapinoController extends CI_Controller {
         $this->load->view('profile', $profile);
     }
 
+    public function editProfile(){
+      $result;
+      $this->load->model('KapinoUsers');
+      $userInfo['firstName'] = $this->input->post('firstname');
+      $userInfo['lastName'] = $this->input->post('lastname');
+      $userInfo['birthDate'] = $this->input->post('birthdate');
+      $userInfo['mobileNum'] = $this->input->post('mobile');
+      $userInfo['address'] = $this->input->post('address');
+      $userInfo['email'] = $this->session->userdata('username');
+
+      $result = $this->KapinoUsers->modifyUserInfo($userInfo);
+
+      echo json_encode($result);
+    }
+
+    public function editFarm(){
+
+    }
+
     public function TheSellerProfile() {
         $this->load->model('KapinoUsers');
         $sellerID = $this->input->post('sellerID');

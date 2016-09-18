@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 
     <!--font-awesome-->
-    <script src="https://use.fontawesome.com/7e20b3e3f4.js"></script>
+    <script src="https://use.fontawesome.com/e13547c890.js"></script>
     <!--lobster|lobster2|montserrat-->
     <link href="https://fonts.googleapis.com/css?family=Lobster|Lobster+Two|Montserrat" rel="stylesheet">
     <!-- Host -->
@@ -167,7 +167,7 @@
                                                         <div class="fresh-table toolbar-color-azure">
                                                             <div class="toolbar personal-toolbar montserrat">
                                                                 <h4>
-                                                                <i class="fa fa-user" aria-hidden="true"></i> Personal Information
+                                                                  <i class="fa fa-user" aria-hidden="true"></i> Personal Information
                                                                 </h4>
                                                             </div>
 
@@ -177,6 +177,10 @@
 
                                                         </div>
                                                 <!-- /PERSONAL INFORMATION -->
+
+                                                        <div class="text-right">
+                                                            <button id="editPersonalButton" type="button" class="btn btn-info btn-raised" data-toggle="modal" data-target="#editPersonal">Edit</button>
+                                                        </div>
 
                                                 <!-- FARM INFORMATION -->
                                                         <div id="farmTable" class="fresh-table toolbar-color-orange">
@@ -190,14 +194,9 @@
                                                         </div>
                                                 <!-- /FARM INFORMATION -->
 
-
-
-
-<!--
-                                                <div class="text-right">
-                                                    <button type="button" class="btn btn-info btn-raised">Edit</button>
-                                                </div>
--->
+                                                        <div class="text-right">
+                                                            <button id="editFarmButton" type="button" class="btn btn-info btn-raised" data-toggle="modal" data-target="#editFarm">Edit</button>
+                                                        </div>
 
                                             </div>
 
@@ -563,6 +562,238 @@
              <form id="deleteAd" method="POST" action="<?php echo site_url('deleteAds'); ?>">
                 <input id="prodidToDelete" name="prodID" type="hidden">
              </form>
+
+         <!--  EDIT PERSONAL MODAL -->
+         <div class="modal fade" id="editPersonal" tabindex="-1" role="dialog" aria-labelledby="EditPersonalModal" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <div class="modal-header text-center">
+                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                         <h3 class="montserrat">
+                           <i class="fa fa-user fa-lg text-info"></i>
+                           <br />
+                           Edit Personal Information
+                         </h3>
+                         <hr />
+                     </div>
+                     <div class="modal-body">
+                         <div class="modal-body-form">
+                             <form id="editPersonalForm">
+                                 <!-- F.Name & L.Name -->
+                                 <div class="row">
+                                     <div class="col-sm-6">
+                                         <div class="form-group has-feedback">
+                                             <div class="input-group has-feedback">
+                                                 <span class="input-group-addon">
+                                                   <i class="material-icons">face</i>
+                                                 </span>
+
+                                                 <input id="firstname" name="firstname" type="text" class="form-control" placeholder="First Name" />
+
+                                             </div>
+                                         </div>
+                                     </div>
+
+                                     <div class="col-sm-6">
+                                         <div class="form-group has-feedback">
+                                             <div class="input-group has-feedback">
+                                                 <span class="input-group-addon">
+                                             <i class="material-icons">face</i>
+                                           </span>
+                                                 <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Last Name">
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <!--  Mobile Number and Birth Date -->
+                                 <div class="form-group">
+                                     <div class="row">
+                                         <div class="col-sm-6">
+                                             <!-- Mobile Number -->
+                                             <div class="form-group has-feedback">
+                                                 <div class="input-group has-feedback">
+                                                     <span class="input-group-addon">
+                                                       <i class="material-icons">phone_android</i>
+                                                     </span>
+                                                     <input id="mobile" name="mobile" class="form-control" type="text" placeholder="Mobile Number">
+
+                                                 </div>
+                                             </div>
+                                             <!-- Mobile Address -->
+                                         </div>
+                                         <!--  Birth Date -->
+                                         <div class="col-sm-6">
+                                             <div class="form-group has-feedback">
+                                                 <div class="input-group has-feedback">
+                                                     <span class="input-group-addon">
+                                             <i class="material-icons">date_range</i>
+                                           </span>
+                                                     <input type="text" class="form-control datepicker" name="birthdate" id="birthdate" placeholder="Birth Date" onkeydown="return false" data-date-format="yyyy-mm-dd" />
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <!-- /Birth Date  -->
+                                         <!-- Address -->
+                                         <div class="form-group has-feedback">
+                                             <div class="input-group has-feedback">
+                                                 <span class="input-group-addon">
+                                                   <i class="material-icons">location_on</i>
+                                                 </span>
+
+                                                 <label for="inputAddress" class="control-label">Address (100 Char. Max)</label>
+                                                 <textarea class="form-control" rows="2" id="address" name="address" placeholder="Enter Your Address Here"></textarea>
+                                             </div>
+                                         </div>
+                                         <!-- /Address -->
+                                         <div class="form-group text-right">
+                                             <button id="submitPersonalButton" type="submit" class="btn btn-primary btn-raised btn-info">Save Changes</button>
+                                         </div>
+
+
+                                     </div>
+                                 </div>
+
+                             </form>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!--  /EDIT PERSONAL MODAL -->
+
+         <!--  EDIT FARM MODAL -->
+         <div class="modal fade" id="editFarm" tabindex="-1" role="dialog" aria-labelledby="EditFarmModal" aria-hidden="true">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                   <div class="modal-header text-center">
+                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                       <h3 class="montserrat">
+                         <i class="fa fa-leaf fa-lg text-warning"></i>
+                         <br />
+                         Edit Farm Information
+                       </h3>
+                       <hr />
+                   </div>
+                     <div class="modal-body">
+                       <div class="modal-body-form">
+                         <form id="editFarmForm">
+                           <div class="form-group">
+                               <div class="row">
+
+                                   <div class="col-sm-6">
+                                       <div class="form-group has-feedback">
+                                           <div class="input-group has-feedback">
+                                               <span class="input-group-addon">
+                                             <i class="material-icons">credit_card</i>
+                                         </span>
+
+                                               <input id="farmid" name="farmID" type="text" class="form-control" maxlength="50" placeholder="Farmer/Farm ID" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                               <div class="help-block with-errors"></div>
+
+                                           </div>
+                                       </div>
+                                   </div>
+
+                                   <div class="col-sm-6">
+                                       <div class="form-group has-feedback">
+                                           <div class="input-group has-feedback">
+                                               <span class="input-group-addon">
+                                             <i class="material-icons">business</i>
+                                         </span>
+
+
+                                               <input id="farmname" type="text" class="form-control" name="name" maxlength="50" placeholder="Farm Name" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                               <div class="help-block with-errors"></div>
+
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <!-- F.Name & L.Name -->
+
+                           <!-- Address -->
+                               <div class="form-group has-feedback">
+                               <div class="input-group has-feedback">
+                                   <span class="input-group-addon">
+                                       <i class="material-icons">location_on</i>
+                                   </span>
+
+                                   <label for="farmaddress" class="control-label">Farm Address</label>
+                                   <textarea class="form-control" rows="2" name="location" id="farmaddress" placeholder="Enter Your Address Here" maxlength="100" required></textarea>
+                                   <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                   <div class="help-block with-errors"></div>
+
+                               </div>
+                               </div>
+                           <!-- /Address -->
+
+                           <!-- Farm Size -->
+                           <h5 class="form-label montserrat">Farm Size:</h5>
+                           <div class="row">
+                               <div class="form-group has-feedback">
+                                   <div class="col-sm-6 radio text-center">
+                                       <h4 class="farmtype"><span class="smallholderRadio"><i class="fa fa-home fa-lg text-warning"></i><br />Small Holder</span></h4>
+
+                                       <label class="">
+                                           <input type="radio" id="smallholder" name="farmtype" value="smallholder" required />
+                                       </label>
+                                   </div>
+                                   <div class="col-sm-6 radio text-center">
+                                       <h4 class="farmtype"><span class="plantationRadio"><i class="fa fa-building fa-lg text-warning"></i><br />Plantation</span></h4>
+
+                                       <label class="">
+                                           <input type="radio" id="plantation" name="farmtype" value="plantation" />
+                                           <br />
+                                       </label>
+                                   </div>
+
+                               </div>
+                           </div>
+                           <!-- /Farm Size -->
+
+                           <div class="row">
+                             <div class="col-sm-4 col-sm-offset-4">
+                               <div class="form-group has-feedback">
+                               <div class="input-group has-feedback">
+                                   <span class="input-group-addon">
+                                       <i class="material-icons">border_all</i>
+                                   </span>
+
+                                   <label for="farmaddress" class="control-label">Size in Hectares (Optional)</label>
+                                   <input class="form-control text-center" type="number" id="farmhectare" placeholder="Hectares" name="hectares" required>
+                                   <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                   <div class="help-block with-errors"></div>
+
+                               </div>
+                               </div>
+                             </div>
+
+                           </div>
+
+                           <!-- Submit Button -->
+                           <div class="form-group text-right">
+                               <button id="submitFarmButton" type="submit" class="btn btn-primary btn-raised btn-warning">Save Changes</button>
+                           </div>
+                         </form>
+                       </div>
+                     </div>
+                     <div class="modal-footer">
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+         <!--  /EDIT FARM MODAL -->
 </body>
 
 <script src="<?php echo base_url(); ?>bootstrap/Material%20Kit/assets/js/jquery.min.js" type="text/javascript"></script>
@@ -584,23 +815,100 @@
 <script src="<?php echo base_url(); ?>bootstrap/Material%20Kit/assets/js/material-kit.js" type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/fresh_bootstrap_table/assets/js/bootstrap-table.js"></script>
 
+<!-- Jquery Validation -->
+<script src="<?php echo base_url(); ?>assets/js/jquery.validate.js" type="text/javascript"></script>
+
 
 <script>
      //User Info
+     var $profileData = <?php echo json_encode($userInfo); ?>;
+     var $farmData = <?php echo json_encode($farmInfo); ?>;
+     var $isSeller = $profileData['farmID'];
+     var $favInfo = <?php echo json_encode($favInfo); ?>;
+     var $prodInfo = <?php echo json_encode($prodInfo); ?>;
+     var $prodID = $prodInfo['prodID'];
+     var $disable = <?php echo json_encode($disable); ?>;
      //FRESH TABLE
         var $personal_table = $('#personal-table');
         var $farm_table = $('#farm-table');
         var $fave_table = $('#fave-table');
         var $ads_table = $('#ads-table');
 
+        // Function to be called after successful form submit.
+        function submitPersonalInfo(){
+          console.log("Submmited successfully");
+          $('#editPersonal').modal('hide');
+          $.ajax({
+            url: '<?php echo site_url('editProfile');?>',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              firstname : $('#firstname').val(),
+              lastname : $('#lastname').val(),
+              birthdate : $('#birthdate').val(),
+              address : $('#address').val(),
+              mobile : $('#mobile').val()}
+          })
+          .done(function(result) {
+            console.log("success " + result);
+            //Update the Table.
+            updateProfileData();
+            $personal_table.bootstrapTable(
+              'updateRow',{
+                index: 0,
+                row: {
+                  data: $('#firstname').val() + ' ' + $('#lastname').val()
+                }
+              }
+            );
+            $personal_table.bootstrapTable(
+              'updateRow',{
+                index: 1,
+                row: {
+                  data: $('#address').val()
+                }
+              }
+            );
+            $personal_table.bootstrapTable(
+              'updateRow',{
+                index: 2,
+                row: {
+                  data: $('#birthdate').val()
+                }
+              }
+            );
+            $personal_table.bootstrapTable(
+              'updateRow',{
+                index: 4,
+                row: {
+                  data: $('#mobile').val()
+                }
+              }
+            );
+            generateSuccess('Edit Successful!');
+
+          })
+          .fail(function(result) {
+            console.log("error");
+            generateError('Unable to Edit :(');
+          })
+          .always(function(result) {
+            console.log("complete");
+          });
+
+        }
+
+        function updateProfileData(){
+          $profileData['firstName'] = $('#firstname').val();
+          $profileData['lastName'] = $('#lastname').val();
+          $profileData['birthDate'] = $('#birthdate').val();
+          $profileData['address'] = $('#address').val();
+          $profileData['mobileNum'] = $('#mobile').val();
+          $profileData['email'] = $('#email').val();
+        }
+
     $(document).ready(function () {
-         var $profileData = <?php echo json_encode($userInfo); ?>;
-         var $farmData = <?php echo json_encode($farmInfo); ?>;
-         var $isSeller = $profileData['farmID'];
-         var $favInfo = <?php echo json_encode($favInfo); ?>;
-         var $prodInfo = <?php echo json_encode($prodInfo); ?>;
-         var $prodID = $prodInfo['prodID'];
-         var $disable = <?php echo json_encode($disable); ?>;
+
          console.log($disable + ' DIS!');
         // #adNav = Navigation
         // #adsNav = Profille Tab
@@ -608,6 +916,7 @@
              console.log($isSeller);
              $('#isSeller').css('display', 'none');
              $('#farmTable').css('display', 'none');
+             $('#editFarmButton').css('display', 'none');
              $('#adsNav').attr('href', '#Buyerads');
              $('#Sellerads').css('display', 'none');
              $('#adNav').css('display', 'none');
@@ -652,8 +961,20 @@
 
         }
 
+        // Set the value of form fields when edit is invoked.
+        $('#editPersonalButton').click(function(event) {
+          $('#firstname').val( $profileData['firstName'] );
+          $('#lastname').val( $profileData['lastName'] );
+          $('#birthdate').val( $profileData['birthDate'] );
+          $('#address').val( $profileData['address'] );
+          $('#mobile').val( $profileData['mobileNum'] );
+          $('#email').val( $profileData['email']);
+        });
 
-        //$fave_table.bootstrapTable('append', $data);
+        // Prevent page reload when Submit is called.
+        $('#editPersonalForm').submit(function(event) {
+          event.preventDefault();
+        });
 
 
         // the body of this function is in assets/material-kit.js
@@ -706,7 +1027,7 @@
                     data: $profileData['address']
                 },{
                     type: 'Birthdate',
-                    data: $profileData['birthDate']
+                    data: $profileData['birthDateFull']
                 },{
                     type: 'Email',
                     data: $profileData['email']
@@ -871,14 +1192,116 @@
 
 
 
-      $(window).resize(function () {
-        $personal-table.bootstrapTable('resetView');
-          $farm-table.bootstrapTable('resetView');
+        $(window).resize(function () {
+        $personal_table.bootstrapTable('resetView');
+          $farm_table.bootstrapTable('resetView');
           $fave_table.bootstrapTable('resetView');
           $ads_table.bootstrapTable('resetView');
         });
 
+        $.validator.addMethod("regex", function(value, element, regexp) {
+                return regexp.test(value);
+            }, "Please Enter a Valid Phone Number");
 
+        $.validator.addMethod("checkAge", function(value, element){
+              var today = new Date();
+              var birthDate = new Date(value);
+              var age = today.getFullYear() - birthDate.getFullYear();
+              var m = today.getMonth() - birthDate.getMonth();
+
+              if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+              age--;
+              }
+
+
+              return age >= 18;
+
+        }, "You must be at least 18 to Register.");
+
+        // [START] EDIT PERSONAL FORM VALIDATOR
+        $('#editPersonalForm').validate({
+            rules: {
+                firstname: {
+                    required: true,
+                    maxlength: 50
+                },
+                lastname: {
+                    required: true,
+                    maxlength: 50
+                },
+                mobile: {
+                    required: true,
+                    digits: true,
+                    regex: /^(09)\d{9}$/
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                },
+                address: {
+                    required: true,
+                    maxlength: 100
+                },
+                birthdate: {
+                    checkAge: true,
+                    required: true,
+                    date: true
+
+                }
+            },
+            messages: {
+                firstname: {
+                    required: "Please enter your Firstname",
+                    maxlength: "Maximum Character is 50."
+                },
+                lastname: {
+                    required: "Please enter your Lastname.",
+                    maxlength: "Maximum Character is 50."
+                },
+                password: {
+                    required: "Please provide a password.",
+                    minlength: "Your password must be at least 6 characters long."
+                },
+                confirm_password: {
+                    required: "Please provide a password.",
+                    minlength: "Your password must be at least 6 characters long.",
+                    equalTo: "Password do not match."
+                },
+                address: {
+                    required: "Please provide your Address.",
+                    maxlength: 'Maximum of 100 Characters.'
+                },
+                birthdate: {
+                    required: "Please Enter your Birth Date.",
+                    checkAge: "You must be at least 18 to Register."
+                },
+
+            },
+            errorElement: 'div',
+            errorPlacement: function(error, element) {
+                error.addClass('help-block');
+
+
+                if (element.prop('type') === 'checkbox') {
+                    error.insertAfter('element.parent("label")');
+                } else {
+                    error.insertAfter(element);
+                }
+
+                if (!element.next('span')[0]) {
+                    $("<span class='glyphicon glyphicon-remove form-control-feedback'></span>").insertAfter(element);
+                }
+
+            },
+            submitHandler: function(form){
+              submitPersonalInfo();
+            }
+        });
 
     });
 
@@ -977,12 +1400,12 @@
           dismissQueue: true,
           timeout: 10000,
           closeWith: ['click'],
-          layout: 'topCenter',
+          layout: 'bottomRight',
           theme: 'relax',
           maxVisible: 10,
           animation: {
             open  : 'animated shake',
-            close : 'animated bounceOutUp',
+            close : 'animated bounceOutRight',
             easing: 'swing',
             speed : 500
           }
@@ -998,12 +1421,12 @@
           dismissQueue: true,
           timeout: 10000,
           closeWith: ['click'],
-          layout: 'topCenter',
+          layout: 'bottomRight',
           theme: 'relax',
           maxVisible: 10,
           animation: {
-            open  : 'animated flipInX',
-            close : 'animated flipOutX',
+            open  : 'animated bounceInRight',
+            close : 'animated bounceOutRight',
             easing: 'swing',
             speed : 500
           }
@@ -1032,11 +1455,6 @@
         });
       }
 
-
-
-
 </script>
 <script src="<?php echo base_url(); ?>assets/js/validator.min.js"></script>
-
-
 </html>

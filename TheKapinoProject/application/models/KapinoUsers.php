@@ -53,8 +53,8 @@ class KapinoUsers extends CI_Model {
         "farmID" => $row->farmID,
 
         );
-        $userInfo['birthDate'] = strtotime($userInfo['birthDate']);
-        $userInfo['birthDate'] = date('F j, Y', $userInfo['birthDate']);
+        $userInfo['birthDateFull'] = strtotime($userInfo['birthDate']);
+        $userInfo['birthDateFull'] = date('F j, Y', $userInfo['birthDateFull']);
         return $userInfo;
 
 
@@ -247,8 +247,11 @@ class KapinoUsers extends CI_Model {
     }
 
     public function modifyUserInfo($userInfo) {
+      $userID = $this->getIDFromEmail($userInfo['email']);
+      $this->db->where('userID', $userID);
+      $this->db->update('users', $userInfo);
 
-
+      return ($this->db->affected_rows() != 1) ? false : true;
     }
 
     public function addReview($formData) {
