@@ -254,6 +254,15 @@ class KapinoUsers extends CI_Model {
       return ($this->db->affected_rows() != 1) ? false : true;
     }
 
+    public function modifyFarmInfo($farmInfo, $email){
+      //var_dump($farmInfo);
+      $farmID = $this->getFarmID($email);
+      $this->db->where('farmID', $farmID);
+      $this->db->update('farms', $farmInfo);
+
+      return ($this->db->affected_rows() != 1) ? false : true;
+    }
+
     public function addReview($formData) {
 
         $query = $this->db->insert('ratings', $formData);

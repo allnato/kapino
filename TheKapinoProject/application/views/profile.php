@@ -682,43 +682,23 @@
                      <div class="modal-body">
                        <div class="modal-body-form">
                          <form id="editFarmForm">
-                           <div class="form-group">
-                               <div class="row">
 
-                                   <div class="col-sm-6">
+
                                        <div class="form-group has-feedback">
                                            <div class="input-group has-feedback">
                                                <span class="input-group-addon">
-                                             <i class="material-icons">credit_card</i>
-                                         </span>
+                                                 <i class="material-icons">business</i>
+                                              </span>
 
-                                               <input id="farmid" name="farmID" type="text" class="form-control" maxlength="50" placeholder="Farmer/Farm ID" required>
-                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                               <div class="help-block with-errors"></div>
-
-                                           </div>
-                                       </div>
-                                   </div>
-
-                                   <div class="col-sm-6">
-                                       <div class="form-group has-feedback">
-                                           <div class="input-group has-feedback">
-                                               <span class="input-group-addon">
-                                             <i class="material-icons">business</i>
-                                         </span>
-
-
+                                              <label for="farmname" class="control-label">Farm Name</label>
                                                <input id="farmname" type="text" class="form-control" name="name" maxlength="50" placeholder="Farm Name" required>
                                                <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                                <div class="help-block with-errors"></div>
 
                                            </div>
                                        </div>
-                                   </div>
 
-                               </div>
-                           </div>
-                           <!-- F.Name & L.Name -->
+
 
                            <!-- Address -->
                                <div class="form-group has-feedback">
@@ -834,7 +814,7 @@
         var $fave_table = $('#fave-table');
         var $ads_table = $('#ads-table');
 
-        // Function to be called after successful form submit.
+        // Function to be called after successful form submit from editPersonalInfo.
         function submitPersonalInfo(){
           console.log("Submmited successfully");
           $('#editPersonal').modal('hide');
@@ -853,38 +833,6 @@
             console.log("success " + result);
             //Update the Table.
             updateProfileData();
-            $personal_table.bootstrapTable(
-              'updateRow',{
-                index: 0,
-                row: {
-                  data: $('#firstname').val() + ' ' + $('#lastname').val()
-                }
-              }
-            );
-            $personal_table.bootstrapTable(
-              'updateRow',{
-                index: 1,
-                row: {
-                  data: $('#address').val()
-                }
-              }
-            );
-            $personal_table.bootstrapTable(
-              'updateRow',{
-                index: 2,
-                row: {
-                  data: $('#birthdate').val()
-                }
-              }
-            );
-            $personal_table.bootstrapTable(
-              'updateRow',{
-                index: 4,
-                row: {
-                  data: $('#mobile').val()
-                }
-              }
-            );
             generateSuccess('Edit Successful!');
 
           })
@@ -905,6 +853,120 @@
           $profileData['address'] = $('#address').val();
           $profileData['mobileNum'] = $('#mobile').val();
           $profileData['email'] = $('#email').val();
+
+          $personal_table.bootstrapTable(
+            'updateRow',{
+              index: 0,
+              row: {
+                data: $('#firstname').val() + ' ' + $('#lastname').val()
+              }
+            }
+          );
+          $personal_table.bootstrapTable(
+            'updateRow',{
+              index: 1,
+              row: {
+                data: $('#address').val()
+              }
+            }
+          );
+          $personal_table.bootstrapTable(
+            'updateRow',{
+              index: 2,
+              row: {
+                data: $('#birthdate').val()
+              }
+            }
+          );
+          $personal_table.bootstrapTable(
+            'updateRow',{
+              index: 4,
+              row: {
+                data: $('#mobile').val()
+              }
+            }
+          );
+        }
+
+        function submitFarmInfo(){
+          console.log('Submmited successfully.');
+          $('#editFarm').modal('hide');
+          // Check the selected farm size.
+          var $size = null;
+          if($('#plantation').is(':checked')){
+            $size = 'plantation';
+          } else if ($('#smallholder').is(':checked')) {
+            $size = 'small holder';
+          }
+          // AJAX
+          $.ajax({
+            url: '<?php echo site_url('editFarm'); ?>',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              farmname: $('#farmname').val(),
+              farmlocation: $('#farmaddress').val(),
+              farmsize: $size,
+              farmhectare: $('#farmhectare').val()
+            }
+          })
+          .done(function(result) {
+            console.log("success");
+            updateFarmData();
+            generateSuccess('Edit Successful!');
+          })
+          .fail(function(result) {
+            console.log("error");
+            generateError('Unable to Edit :(');
+          })
+          .always(function() {
+            console.log("complete");
+          });
+        }
+
+        function updateFarmData(){
+          $farmData['name'] = $('#farmname').val();
+          $farmData['location'] = $('#farmaddress').val();
+          $farmData['hectare'] = $('#farmhectare').val();
+          if($('#plantation').is(':checked')){
+            $farmData['size'] = 'plantation';
+          } else if ($('#smallholder').is(':checked')) {
+            $farmData['size'] = 'small holder';
+          }
+
+          $farm_table.bootstrapTable(
+            'updateRow',{
+              index: 1,
+              row: {
+                data: $farmData['name']
+              }
+            }
+          );
+          $farm_table.bootstrapTable(
+            'updateRow',{
+              index: 2,
+              row: {
+                data: $farmData['location']
+              }
+            }
+          );
+          $farm_table.bootstrapTable(
+            'updateRow',{
+              index: 3,
+              row: {
+                data: $farmData['size']
+              }
+            }
+          );
+          $farm_table.bootstrapTable(
+            'updateRow',{
+              index: 4,
+              row: {
+                data: $farmData['hectare'] + ' Hectare(s)'
+              }
+            }
+          );
+
         }
 
     $(document).ready(function () {
@@ -961,7 +1023,7 @@
 
         }
 
-        // Set the value of form fields when edit is invoked.
+        // Set the value of form fields when editPersonal is invoked.
         $('#editPersonalButton').click(function(event) {
           $('#firstname').val( $profileData['firstName'] );
           $('#lastname').val( $profileData['lastName'] );
@@ -971,9 +1033,27 @@
           $('#email').val( $profileData['email']);
         });
 
+        // Set the value of form fields when editFarm is invoked.
+        $('#editFarmButton').click(function(event) {
+          $('#farmname').val( $farmData['name'] );
+          $('#farmaddress').val( $farmData['location'] );
+          $('#farmhectare').val( $farmData['hectare'] );
+          if($farmData['size'] === 'small holder'){
+            $("#smallholder").prop("checked", true);
+          } else if ($farmData['size'] === 'plantation') {
+            $('#plantation').prop('checked', true);
+          }
+
+        });
+
         // Prevent page reload when Submit is called.
         $('#editPersonalForm').submit(function(event) {
           event.preventDefault();
+        });
+
+        $('#editFarmForm').submit(function(event) {
+          event.preventDefault();
+          submitFarmInfo();
         });
 
 
@@ -1064,12 +1144,21 @@
 
             data: [
                 {
-                    type: 'Farm ID',
-                    data: $profileData['farmID']
+                  type: 'Farm ID',
+                  data: $profileData['farmID']
                 },{
-                   type: 'Company',
-                    data: $farmData['name']
-                },
+                  type: 'Company',
+                  data: $farmData['name']
+                },{
+                  type: 'Farm Location',
+                  data: $farmData['location']
+                },{
+                  type: 'Farm Type',
+                  data: $farmData['size']
+                },{
+                  type: 'Farm Size',
+                  data: $farmData['hectare'] + ' Hectare(s)'
+                }
             ]
 
         });
