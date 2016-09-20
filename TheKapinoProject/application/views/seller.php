@@ -107,23 +107,7 @@
                                         <!-- F.Name & L.Name -->
                                         <div class="form-group">
                                             <div class="row">
-
-                                                <div class="col-sm-6">
-                                                    <div class="form-group has-feedback">
-                                                        <div class="input-group has-feedback">
-                                                            <span class="input-group-addon">
-                                                          <i class="material-icons">credit_card</i>
-                                                      </span>
-
-                                                            <input id="farmid" name="farmID" type="text" class="form-control" maxlength="50" placeholder="Farmer/Farm ID" required>
-                                                            <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                                            <div class="help-block with-errors"></div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-12">
                                                     <div class="form-group has-feedback">
                                                         <div class="input-group has-feedback">
                                                             <span class="input-group-addon">
