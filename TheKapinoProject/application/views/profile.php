@@ -746,7 +746,7 @@
                     type: 'Farm ID',
                     data: $profileData['farmID']
                 },{
-                   type: 'Company',
+                   type: 'Farm Name',
                     data: $farmData['name']
                 },
             ]
