@@ -2,27 +2,27 @@
 
 class KapinoFarms extends CI_Model {
     private $sys;
-    
+
     public function __construct() {
         parent::__construct();
         $this->sys = $this->load->database('Kapino', TRUE);
     }
-    
+
     public function AddFarms($table, $data) {
-        
-        $query = $this->db->insert($table,$data);
-        return $query;
+        $this->db->insert($table,$data);
+
+        return $this->db->insert_id();
     }
-    
+
     public function setFarmID($data, $email) {
-        
+
         $farmID['farmID'] = $data;
         $condition = "email =" . "'" . $email . "'";
-        
+
         $this->db->where($condition);
         $this->db->update('users', $farmID);
     }
-   
+
 }
 
 ?>
