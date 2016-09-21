@@ -73,7 +73,8 @@ $route['like'] = 'KapinoController/TheLikeAd';
 $route['sellerprofile'] = 'KapinoController/TheSellerProfile';
 $route['sort'] = 'KapinoController/TheSortMarket';
 $route['filter'] = 'KapinoController/TheVarietyMarket';
-$route['TheContact'] = 'KapinoController/contactUs';
+$route['editProfile'] = 'KapinoController/editProfile';
+$route['editFarm'] = 'KapinoController/editFarm';
 // Default Kapino Users routes ends here
 
 // Routes for the privilaged 1%, White Supremacy, Donald Trump, Elitist Kapino Admin Users
