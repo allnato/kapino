@@ -144,22 +144,24 @@ class KapinoController extends CI_Controller {
 
     public function TheSortMarket() {
         $sid = session_id();
-        $filterDate = $this->input->post('checkboxDate');
-        $filterRate = $this->input->post('checkboxRate');
+        $filter = $this->input->get('checkboxSort');
         if($sid) {
             //Do this if session exists
             $this->load->model('KapinoUsers');
             $this->load->model('KapinoProducts');
             $market['userInfo'] = $this->KapinoUsers->getNameFromEmail($this->session->userdata('username'));
             $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));
-            if($filterDate == null) {
+            if($filter == 'date') {
 
                 $group = 'updateDate';
                 $market['marketProducts'] = $this->KapinoProducts->getDateProducts($group);
             }
-            else if(filterRate == null)
+            else if($filter == 'rate'){
                 var_dump('RATE');
                 $market['marketProducts'] = $this->KapinoProducts->getRateProducts();
+            } else{
+                $market['marketProducts'] = $this->KapinoProducts->getAllProducts();
+            }
         }
         else {
             $market['userInfo'] = null;
@@ -169,74 +171,37 @@ class KapinoController extends CI_Controller {
     }
 
     public function TheVarietyMarket() {
+      $type = $this->input->get('radioType');
+      $var = $this->input->get('radioVar');
+      $sid = session_id();
 
-        $sid = session_id();
-        $filterArabica = $this->input->get('checkboxArabica');
-        $filterRobusta = $this->input->get('checkboxRobusta');
-        $filterLiberica = $this->input->get('checkboxLiberica');
 
-        $filterDried = $this->input->get('checkboxDried');
-        $filterRoasted = $this->input->get('checkboxRoasted');
-        $filterFresh = $this->input->get('checkboxFresh');
+      if($sid) {
+          //Do this if session exists
+          $this->load->model('KapinoUsers');
+          $this->load->model('KapinoProducts');
+          $market['userInfo'] = $this->KapinoUsers->getNameFromEmail($this->session->userdata('username'));
+          $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));
+      }
+      else {
+          $market['userInfo'] = null;
+          $market['userFarmID'] = null;
+      }
 
-        if($sid) {
-            //Do this if session exists
-            $this->load->model('KapinoUsers');
-            $this->load->model('KapinoProducts');
-            $market['userInfo'] = $this->KapinoUsers->getNameFromEmail($this->session->userdata('username'));
-            $market['userFarmID'] = $this->KapinoUsers->getFarmID($this->session->userdata('username'));
-        }
-        else {
-            $market['userInfo'] = null;
-            $market['userFarmID'] = null;
-        }
         $market['marketProducts'] = "";
-        if($filterArabica != null && $filterDried != null) {
-            $type = 'Arabica';
-            $var = 'Dried';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterArabica != null && $filterRoasted != null) {
-            $type = 'Arabica';
-            $var = 'Roasted';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterArabica != null && $filterFresh != null) {
-            $type = 'Arabica';
-            $var = 'Fresh';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterRobusta != null && $filterDried != null) {
-            $type = 'Robusta';
-            $var = 'Dried';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterRobusta != null && $filterRoasted != null) {
-            $type = 'Robusta';
-            $var = 'Roasted';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterRobusta != null && $filterFresh != null) {
-            $type = 'Robusta';
-            $var = 'Fresh';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterLiberica != null && $filterDried != null) {
-            $type = 'Liberica';
-            $var = 'Dried';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterLiberica != null && $filterRoasted != null) {
-            $type = 'Liberica';
-            $var = 'Roasted';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
-        }
-        else if($filterLiberica != null && $filterFresh != null) {
-            $type = 'Liberica';
-            $var = 'Fresh';
-            $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
+        if($type == null && $var == null){
+          $market['marketProducts'] = $this->KapinoProducts->getAllProducts();
+        }elseif ($type != null && $var == null) {
+          $market['marketProducts'] = $this->KapinoProducts->getTypeProducts($type);
+        }elseif ($type == null && $var != null) {
+          $market['marketProducts'] = $this->KapinoProducts->getVarProducts($var);
+        }else{
+          $market['marketProducts'] = $this->KapinoProducts->getFilterProducts($type, $var);
         }
 
+
+        $market['type'] = $type;
+        $market['var'] = $var;
         $this->load->view('market.php', $market);
 
     }

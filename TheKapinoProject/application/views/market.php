@@ -134,19 +134,9 @@
                     <!-- NAV PILLS -->
                     <div class="nav-align-center marketNav">
                         <ul class="nav nav-pills nav-pills-danger" role="tablist">
-                            <li>
-                                <a href="#dashboard" role="tab" data-toggle="tab">
-                                    <i class="material-icons">new_releases</i> New
-                                </a>
-                            </li>
                             <li class="active">
                                 <a href="#schedule" role="tab" data-toggle="tab">
                                     <i class="material-icons">dashboard</i> Market
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#tasks" role="tab" data-toggle="tab">
-                                    <i class="material-icons">whatshot</i> Featured
                                 </a>
                             </li>
                         </ul>
@@ -164,15 +154,15 @@
 
                                 <form method="get" action="<?php echo site_url('filter'); ?>">
                                     <label>
-                                        <input type="checkbox" name="checkboxArabica" value="Arabica"> Arabica
+                                        <input type="radio" name="radioType" value="Arabica"/> Arabica
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="checkbox" name="checkboxLiberica" value="Liberica"> Liberica
+                                        <input type="radio" name="radioType" value="Liberica"/> Liberica
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="checkbox" name="checkboxRobusta" value="Robusta"> Robusta
+                                        <input type="radio" name="radioType" value="Robusta"/> Robusta
                                     </label>
 
 
@@ -181,22 +171,22 @@
 
 
                                     <label>
-                                        <input type="checkbox" name="checkboxRoasted" value="Roasted"> Roasted
+                                        <input type="radio" name="radioVar" value="roasted"/> Roasted
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="checkbox" name="checkboxDried" value="Dried"> Dried
+                                        <input type="radio" name="radioVar" value="dried"/> Dried
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="checkbox" name="checkboxFresh" value="Fresh"> Fresh
+                                        <input type="radio" name="radioVar" value="fresh"/> Fresh
                                     </label>
                                     <br>
 
                                     <br>
                                     <br>
                                     <div class="center-block text-center">
-                                        <input type="submit" name="submitFilter" value="Filter" class="btn btn-raised btn-success">
+                                        <input type="submit" class="btn btn-raised btn-success">
                                     </div>
 
                                 </form>
@@ -206,15 +196,15 @@
                             <div class="well">
                                 <form method="get" action="<?php echo site_url('sort'); ?>">
                                     <label>
-                                        <input type="checkbox" name="checkboxDate" value="date"> Date Added
+                                        <input type="radio" id="date"name="checkboxSort" value="date"> Date Added
                                     </label>
                                     <br>
                                     <label>
-                                        <input type="checkbox" name="checkboxRate" value="rate"> Rating
+                                        <input type="radio" id="rate" name="checkboxSort" value="rate"> Rating
                                     </label>
 
                                     <div class="center-block text-center">
-                                        <input type="submit" name="submitSort" value="Sort" class="btn btn-raised btn-success">
+                                        <input type="submit" class="btn btn-raised btn-success">
                                     </div>
 
                                 </form>
@@ -377,14 +367,15 @@
     <script src="<?php echo base_url(); ?>assets/icheck/icheck.js" type="text/javascript"></script>
     <script type="text/javascript">
 
-
-
         $(document).ready(function() {
           // [START] Navigation Bar Session
           var $isLogged = <?php echo json_encode($userInfo); ?>;
           var $isSeller = <?php echo json_encode($userFarmID); ?>;
           var $marketProducts = <?php echo json_encode($marketProducts); ?>;
           // Check if User is Logged In
+          console.log($marketProducts['type']);
+          console.log($marketProducts['var']);
+
           if($isLogged != false && $isLogged != null) {
               $('#signup').css('display', 'none');
           }

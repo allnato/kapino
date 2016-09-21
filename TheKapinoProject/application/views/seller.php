@@ -288,16 +288,6 @@
           check()
         });
 
-        // $('#plantationDiv').click(function(event) {
-        //   $('#plantation').prop('checked', true);
-        //   check()
-        // });
-        //
-        // $('#smallholderDiv').click(function(event) {
-        //   $('#smallholder').prop('checked', true);
-        //   check()
-        // });
-
         function check(){
           if($('#plantation').is(':checked')){
             console.log('Plantation is Checked');
