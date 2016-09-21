@@ -167,25 +167,25 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <h2 class="text-center title montserrat seaction-heading">Work with us</h2>
                                 <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will respond and get back to you in a couple of working days.</h4>
-                                <form class="contact-form">
+                                <form class="contact-form" action="<?php echo site_url('TheContact'); ?>" method="post">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Name</label>
-                                                <input type="text" class="form-control">
+                                                <input type="text" name="contact-name" class="form-control">
                                             <span class="material-input"></span></div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group label-floating is-empty">
                                                 <label class="control-label">Your Email</label>
-                                                <input type="email" class="form-control">
+                                                <input type="email" name="contact-email" class="form-control">
                                             <span class="material-input"></span></div>
                                         </div>
                                     </div>
 
                                     <div class="form-group label-floating is-empty">
                                         <label class="control-label">Your Message</label>
-                                        <textarea class="form-control" rows="4"></textarea>
+                                        <textarea class="form-control" name="contact-msg" rows="4"></textarea>
                                     <span class="material-input"></span></div>
 
                                     <div class="row">
