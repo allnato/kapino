@@ -147,17 +147,29 @@
                                         <h4 class="form-label montserrat">Farm Size:</h4>
                                         <div class="row">
                                             <div class="form-group has-feedback">
-                                                <div class="col-sm-6 radio text-center">
-                                                    <h4 class="farmtype"><span class="smallholderRadio"><i class="fa fa-home fa-2x text-info"></i><br /><br />Small Holder</span></h4>
+                                                <div class="col-sm-6 radio text-center" id="smallholderDiv">
+                                                    <h4 class="farmtype">
+                                                      <span class="smallholderRadio"><i class="fa fa-home fa-lg text-info"></i>
+                                                      <br />
+                                                      <br />
+                                                      Small Holder
+                                                    </span>
+                                                    </h4>
                                                     <br />
-                                                    <label class="">
-                                                        <input type="radio" id="smallholder" name="farmtype" value="smallholder" required />
+                                                    <label class="" id="smallholderRadio">
+                                                        <input type="radio" id="smallholder" name="farmtype" value="small holder" required />
                                                     </label>
                                                 </div>
-                                                <div class="col-sm-6 radio text-center">
-                                                    <h4 class="farmtype"><span class="plantationRadio"><i class="fa fa-building fa-2x text-info"></i><br /><br />Plantation</span></h4>
+                                                <div class="col-sm-6 radio text-center" id="plantationDiv">
+                                                  <h4 class="farmtype">
+                                                      <span class="plantationRadio"><i class="fa fa-building fa-lg text-info"></i>
+                                                      <br />
+                                                      <br />
+                                                      Plantation
+                                                    </span>
+                                                  </h4>
                                                     <br />
-                                                    <label class="">
+                                                    <label class="" id="plantationRadio">
                                                         <input type="radio" id="plantation" name="farmtype" value="plantation" />
                                                         <br />
                                                     </label>
@@ -265,6 +277,36 @@
         function materialInit() {
             $.material.init();
         }
+
+        $('#plantation').click(function(event) {
+          $('#plantation').prop('checked', true)
+          check();
+        });
+
+        $('#smallholder').click(function(event) {
+          $('#smallholder').prop('checked', true);
+          check()
+        });
+
+        // $('#plantationDiv').click(function(event) {
+        //   $('#plantation').prop('checked', true);
+        //   check()
+        // });
+        //
+        // $('#smallholderDiv').click(function(event) {
+        //   $('#smallholder').prop('checked', true);
+        //   check()
+        // });
+
+        function check(){
+          if($('#plantation').is(':checked')){
+            console.log('Plantation is Checked');
+          } else if ($('#smallholder').is(':checked')) {
+            console.log('Small Holder is Checked');
+          }
+        }
+
+
 
         $(document).ready(function() {
 
