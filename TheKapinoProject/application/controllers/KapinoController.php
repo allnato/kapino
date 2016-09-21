@@ -114,15 +114,14 @@ class KapinoController extends CI_Controller {
     public function addFarms() {
 
         $formData = array(
-            'farmID' => $this->input->post('farmID'),
             'name' => $this->input->post('name'),
             'location' => $this->input->post('location'),
             'size' => $this->input->post('farmtype'),
             'hectare' => $this->input->post('hectares'),
         );
         $this->load->model('KapinoFarms');
-        $this->KapinoFarms->AddFarms('farms', $formData);
-        $this->KapinoFarms->setFarmID($this->input->post('farmID'), $this->session->userdata('username'));
+        $id = $this->KapinoFarms->AddFarms('farms', $formData);
+        $this->KapinoFarms->setFarmID($id, $this->session->userdata('username'));
         redirect(site_url('profile'), 'refresh');
     }
 
@@ -252,6 +251,32 @@ class KapinoController extends CI_Controller {
         $profile['prodInfo'] = $this->KapinoUsers->getAdvertisements($this->session->username);
         $profile['disable'] = 0;
         $this->load->view('profile', $profile);
+    }
+
+    public function editProfile(){
+      $result;
+      $this->load->model('KapinoUsers');
+      $userInfo['firstName'] = $this->input->post('firstname');
+      $userInfo['lastName'] = $this->input->post('lastname');
+      $userInfo['birthDate'] = $this->input->post('birthdate');
+      $userInfo['mobileNum'] = $this->input->post('mobile');
+      $userInfo['address'] = $this->input->post('address');
+      $userInfo['email'] = $this->session->userdata('username');
+
+      $result = $this->KapinoUsers->modifyUserInfo($userInfo);
+
+      echo json_encode($result);
+    }
+
+    public function editFarm(){
+      $this->load->model('KapinoUsers');
+      $farmInfo['name'] = $this->input->post('farmname');
+      $farmInfo['hectare'] = $this->input->post('farmhectare');
+      $farmInfo['location'] = $this->input->post('farmlocation');
+      $farmInfo['size'] = $this->input->post('farmsize');
+      $email = $this->session->userdata('username');
+      $result = $this->KapinoUsers->modifyFarmInfo($farmInfo, $email);
+      echo json_encode($result);
     }
 
     public function TheSellerProfile() {
